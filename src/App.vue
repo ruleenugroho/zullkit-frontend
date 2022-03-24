@@ -6,7 +6,7 @@ import { RouterLink, RouterView } from 'vue-router';
 	<nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
 		<div class="container flex flex-wrap items-center justify-between mx-auto my-2">
 			<RouterLink to="/" class="flex items-center">
-				<img src="@/assets/img/logo.svg" class="h-8 ml-3 sm:ml-0 sm:h-8" alt="Flowbite Logo" />
+				<img src="@/assets/img/logo.svg" class="h-8 ml-3 sm:ml-0 sm:h-8" alt="Zullkit Logo" />
 			</RouterLink>
 			<div class="flex items-center md:order-2">
 				<div class="mr-2 text-sm font-regular">Halo, Galih</div>
@@ -21,7 +21,7 @@ import { RouterLink, RouterView } from 'vue-router';
 					<img
 						class="w-8 h-8 rounded-full"
 						src="https://ui-avatars.com/api/?name=Galih+Pratama&background=160442&color=fff"
-						alt="Zullkit photo"
+						alt="User Photo"
 					/>
 				</button>
 
