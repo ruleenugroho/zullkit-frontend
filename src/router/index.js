@@ -8,7 +8,37 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView
-    },
+	  },
+	  {
+		  path: '/login',
+		  name: 'login',
+		  component: () =>
+			  import('../views/LoginView.vue')
+	  },
+	  {
+		  path: '/register',
+		  name: 'register',
+		  component: () =>
+			  import('../views/RegisterView.vue')
+	  },
+	  {
+		  path: '/product/:id',
+		  name: 'product',
+		  component: () =>
+			  import('../views/DetailView.vue')
+	  },
+	  {
+		  path: '/pricing',
+		  name: 'pricing',
+		  component: () =>
+			  import('../views/PricingView.vue')
+	  },
+	  {
+		  path: '/success',
+		  name: 'success',
+		  component: () =>
+			  import('../views/SuccessView.vue')
+	  },
   ]
 })
 
