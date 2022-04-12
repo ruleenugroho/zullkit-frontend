@@ -11,7 +11,7 @@ const features = ref({})
 
 async function getItemsData() {
 	try {
-		const response = await axios.get("http://zullkit-backend.buildwithangga.id/api/products?id=" + route.params.id)
+		const response = await axios.get("https://zullkit-backend.buildwithangga.id/api/products?id=" + route.params.id)
 		Items.value = response.data.data
 		features.value = response.data.data.features.split(',')
 	} catch (error) {

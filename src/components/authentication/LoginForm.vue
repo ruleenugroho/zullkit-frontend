@@ -15,7 +15,7 @@ const form = ref({
 
 async function login() {
 	try {
-		const response = await axios.post("http://zullkit-backend.buildwithangga.id/api/login", {
+		const response = await axios.post("https://zullkit-backend.buildwithangga.id/api/login", {
 				email: form.value.email,
 				password: form.value.password
 		})

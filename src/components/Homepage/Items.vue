@@ -7,7 +7,7 @@ const Items = ref([])
 
 async function getItemsData() {
 	try {
-		const response = await axios.get("http://zullkit-backend.buildwithangga.id/api/products?limit=3")
+		const response = await axios.get("https://zullkit-backend.buildwithangga.id/api/products?limit=3")
 		Items.value = response.data.data.data
 	} catch (error) {
 		
