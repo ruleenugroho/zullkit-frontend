@@ -1,8 +1,26 @@
 <script setup>
-import { RouterLink } from "vue-router";
+import axios from "axios";
 import IconLayer from "@/components/icons/IconLayer.vue";
 import IconBadge from "@/components/icons/IconBadge.vue";
 import IconBook from "@/components/icons/IconBook.vue";
+
+async function checkout(price) {
+	try {
+		const response = await axios.post("https://zullkit-backend.buildwithangga.id/api/checkout", {
+			payment_total: price,
+			payment_status: 'PENDING',
+		},
+		{
+			headers: {
+				Authorization: localStorage.getItem('token_type') + ' ' + localStorage.getItem('access_token')
+			}
+		})
+
+		window.location.href = response.data.data.payment_url
+	} catch (error) {
+		console.error(error);
+	}
+}
 </script>
 
 <template>
@@ -53,10 +71,9 @@ import IconBook from "@/components/icons/IconBook.vue";
 										Pre-built design screen
 									</li>
 								</ul>
-								<RouterLink
-									to="success"
-									class="inline-flex items-center justify-center w-full px-8 py-3 text-base font-medium text-black bg-gray-200 border border-transparent rounded-full hover:bg-gray-300 md:py-2 md:text-md md:px-10 hover:shadow"
-								>Checkout Now</RouterLink>
+								<button @click="checkout(2000)"
+									class="inline-flex items-center justify-center w-full px-8 py-3 text-base font-medium text-black bg-gray-200 border border-transparent rounded-full hover:bg-gray-300 md:py-2 md:text-md md:px-10 hover:shadow">Checkout
+									Now</button>
 							</div>
 						</div>
 						<div>
@@ -114,10 +131,9 @@ import IconBook from "@/components/icons/IconBook.vue";
 										Unlock cloning app
 									</li>
 								</ul>
-								<RouterLink
-									to="success"
-									class="inline-flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-full hover:bg-indigo-700 md:py-2 md:text-md md:px-10 hover:shadow"
-								>Checkout Now</RouterLink>
+								<button @click="checkout(9000)"
+									class="inline-flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-full hover:bg-indigo-700 md:py-2 md:text-md md:px-10 hover:shadow">Checkout
+									Now</button>
 							</div>
 						</div>
 					</div>
@@ -125,36 +141,36 @@ import IconBook from "@/components/icons/IconBook.vue";
 				<div class="w-full p-5 mx-auto mb-10 md:max-w-7xl">
 					<div class="grid grid-cols-1 gap-4 mx-auto md:grid-cols-3 md:mx-0">
 						<div class="mb-12">
-								<div class="block mb-2">
-									<IconLayer />
-									<h3 class="inline-block ml-2 text-lg font-semibold">Customizable</h3>
-								</div>
-								<p class="mt-2 text-lg text-gray-500">
-									Accelerate your work with our millions
-									<br />of ready-to-use design projects.
-								</p>
+							<div class="block mb-2">
+								<IconLayer />
+								<h3 class="inline-block ml-2 text-lg font-semibold">Customizable</h3>
 							</div>
-							<div class="mb-12">
-								<div class="block mb-2">
-									<IconBadge />
-									<h3 class="inline-block ml-2 text-lg font-semibold">500 Fortune</h3>
-								</div>
-								<p class="mt-2 text-lg text-gray-500">
-									Accelerate your work with our millions
-									<br />of ready-to-use design projects.
-								</p>
+							<p class="mt-2 text-lg text-gray-500">
+								Accelerate your work with our millions
+								<br />of ready-to-use design projects.
+							</p>
+						</div>
+						<div class="mb-12">
+							<div class="block mb-2">
+								<IconBadge />
+								<h3 class="inline-block ml-2 text-lg font-semibold">500 Fortune</h3>
 							</div>
-							<div class="mb-12">
-								<div class="block mb-2">
-									<IconBook />
+							<p class="mt-2 text-lg text-gray-500">
+								Accelerate your work with our millions
+								<br />of ready-to-use design projects.
+							</p>
+						</div>
+						<div class="mb-12">
+							<div class="block mb-2">
+								<IconBook />
 
-									<h3 class="inline-block ml-2 text-lg font-semibold">Documentation</h3>
-								</div>
-								<p class="mt-2 text-lg text-gray-500">
-									Accelerate your work with our millions
-									<br />of ready-to-use design projects.
-								</p>
+								<h3 class="inline-block ml-2 text-lg font-semibold">Documentation</h3>
 							</div>
+							<p class="mt-2 text-lg text-gray-500">
+								Accelerate your work with our millions
+								<br />of ready-to-use design projects.
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>

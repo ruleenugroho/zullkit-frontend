@@ -12,8 +12,9 @@ const User = computed(() => userStore.getUser)
 const IsLoggedIn = computed(() => userStore.IsLoggedIn)
 
 onMounted(() => {
-	console.log("masuk")
-	userStore.fetchUser()
+	if(IsLoggedIn){
+		userStore.fetchUser()
+	}
 })
 </script>
 
