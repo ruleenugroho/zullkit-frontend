@@ -12,7 +12,7 @@ const User = computed(() => userStore.getUser)
 const IsLoggedIn = computed(() => userStore.IsLoggedIn)
 
 onMounted(() => {
-	if(IsLoggedIn){
+	if(localStorage.getItem('token_type') && localStorage.getItem('token_type') != 'null'){
 		userStore.fetchUser()
 	}
 })

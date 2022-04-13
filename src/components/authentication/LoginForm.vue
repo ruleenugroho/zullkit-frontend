@@ -23,7 +23,7 @@ async function login() {
 		localStorage.setItem("token_type", response.data.data.token_type)
 
 		userStore.fetchUser()
-		router.push('/')
+		router.go(-1)
 	} catch (error) {
 		console.log(error)
 	}

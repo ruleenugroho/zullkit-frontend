@@ -1,8 +1,13 @@
 <script setup>
 import axios from "axios";
+import { RouterLink } from "vue-router"
+import { computed } from "vue";
 import IconLayer from "@/components/icons/IconLayer.vue";
 import IconBadge from "@/components/icons/IconBadge.vue";
 import IconBook from "@/components/icons/IconBook.vue";
+import { useUserStore } from '@/stores/user'
+const userStore = useUserStore()
+const IsLoggedIn = computed(() => userStore.IsLoggedIn)
 
 async function checkout(price) {
 	try {
@@ -71,9 +76,10 @@ async function checkout(price) {
 										Pre-built design screen
 									</li>
 								</ul>
-								<button @click="checkout(2000)"
+								<button v-if="IsLoggedIn" @click="checkout(2000)"
 									class="inline-flex items-center justify-center w-full px-8 py-3 text-base font-medium text-black bg-gray-200 border border-transparent rounded-full hover:bg-gray-300 md:py-2 md:text-md md:px-10 hover:shadow">Checkout
 									Now</button>
+								<RouterLink v-else to="/login" class="inline-flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-full hover:bg-indigo-700 md:py-2 md:text-md md:px-10 hover:shadow">Checkout Now</RouterLink>
 							</div>
 						</div>
 						<div>
@@ -131,9 +137,10 @@ async function checkout(price) {
 										Unlock cloning app
 									</li>
 								</ul>
-								<button @click="checkout(9000)"
+								<button v-if="IsLoggedIn" @click="checkout(9000)"
 									class="inline-flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-full hover:bg-indigo-700 md:py-2 md:text-md md:px-10 hover:shadow">Checkout
 									Now</button>
+								<RouterLink v-else to="/login" class="inline-flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-full hover:bg-indigo-700 md:py-2 md:text-md md:px-10 hover:shadow">Checkout Now</RouterLink>
 							</div>
 						</div>
 					</div>

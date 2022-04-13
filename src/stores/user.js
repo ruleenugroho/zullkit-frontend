@@ -22,6 +22,11 @@ export const useUserStore = defineStore({
 			} catch (error) {
 				this.user = false
 			}
+		},
+		logout() {
+			this.user = false
+			localStorage.setItem("access_token", null)
+			localStorage.setItem("token_type", null)
 		}
 	}
 })
